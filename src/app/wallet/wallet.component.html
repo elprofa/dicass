@@ -1,0 +1,87 @@
+<div class="body-wrap">
+  <app-sidebar></app-sidebar>
+  <!-- Header -->
+  <header class="app-header">
+    <button class="btn btn-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
+      <i class="bi bi-list"></i>
+    </button>
+    <a class="navbar-brand-custom" routerLink="/home">FreshCart</a>
+    <div class="header-actions">
+      <a routerLink="/search" class="btn btn-icon">
+        <i class="bi bi-search"></i>
+      </a>
+      <a routerLink="/notifications" class="btn btn-icon notification-indicator">
+        <i class="bi bi-bell"></i>
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container-fluid mt-3">
+
+    <!-- Wallet Balance Card -->
+    <div class="wallet-balance-card mb-3">
+      <small>Available Balance</small>
+      <h1 class="m-0">$42.50</h1>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="wallet-actions">
+      <a routerLink="/add-card" class="action-card">
+        <i class="bi bi-plus-circle"></i>
+        <small>Add Money</small>
+      </a>
+      <a routerLink="/add-card" class="action-card">
+        <i class="bi bi-arrow-up-right-circle"></i>
+        <small>Send</small>
+      </a>
+      <a routerLink="/add-card" class="action-card">
+        <i class="bi bi-bank"></i>
+        <small>Withdraw</small>
+      </a>
+    </div>
+
+    <!-- Transaction History Section -->
+    <div class="transaction-history">
+      <div class="history-header">
+        <h6 class="fw-bold mb-2">Transaction History</h6>
+
+        <div class="btn-group btn-group-sm w-100" role="group">
+          <button type="button" class="btn btn-outline-secondary active">All</button>
+          <button type="button" class="btn btn-outline-secondary">Credited</button>
+          <button type="button" class="btn btn-outline-secondary">Debited</button>
+        </div>
+
+      </div>
+
+      <div class="transaction-list">
+        <div class="transaction-date-header">Today</div>
+        <!-- Debit Transaction -->
+        <div class="transaction-item shadow-sm">
+          <div class="transaction-icon debited">
+            <i class="bi bi-arrow-down"></i>
+          </div>
+          <div class="transaction-details">
+            <p class="mb-0">Payment for Order #12345</p>
+            <small class="text-muted">Oct 21, 2023</small>
+          </div>
+          <div class="transaction-amount debited">-$10.47</div>
+        </div>
+
+        <div class="transaction-date-header">Yesterday</div>
+        <!-- Credit Transaction -->
+        <div class="transaction-item shadow-sm">
+          <div class="transaction-icon credited">
+            <i class="bi bi-arrow-up"></i>
+          </div>
+          <div class="transaction-details">
+            <p class="mb-0">Added funds to Wallet</p>
+            <small class="text-muted">Oct 20, 2023</small>
+          </div>
+          <div class="transaction-amount credited">+$50.00</div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <app-footer></app-footer>
+</div>

@@ -1,0 +1,79 @@
+<div class="body-wrap">
+  <app-sidebar></app-sidebar>
+  <!-- Header -->
+  <header class="app-header">
+    <button class="btn btn-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
+      <i class="bi bi-list"></i>
+    </button>
+    <a class="navbar-brand-custom" href="#">
+      <div class="d-flex flex-column">
+        <h6 class="fw-bold m-0 text-dark">Help & Support</h6>
+        <small class="text-muted fs-10 fw-normal">How can we help you today?</small>
+      </div>
+    </a>
+    <div class="header-actions">
+      <a routerLink="/search" class="btn btn-icon">
+        <i class="bi bi-search"></i>
+      </a>
+      <a routerLink="/notifications" class="btn btn-icon notification-indicator">
+        <i class="bi bi-bell"></i>
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container-fluid mt-3">
+
+    <!-- Help Center Search Bar -->
+    <div class="support-search-bar my-3">
+      <div class="input-group">
+        <span class="input-group-text ps-3"><i class="bi bi-search"></i></span>
+        <input type="text" class="form-control ps-0" placeholder="Search our help center...">
+      </div>
+    </div>
+
+    <!-- Support Options Grid -->
+    <div class="support-options-grid">
+      <!-- FAQ Card -->
+      <a href="#" class="support-card">
+        <i class="bi bi-patch-question-fill"></i>
+        <h6 class="mt-3">FAQs</h6>
+        <p class="small text-muted">Find answers to common questions</p>
+      </a>
+
+      <!-- Chat Card -->
+      <a href="#" class="support-card">
+        <i class="bi bi-chat-dots-fill"></i>
+        <h6 class="mt-3">Chat With Us</h6>
+        <p class="small text-muted">Get live help from our support team</p>
+      </a>
+
+      <!-- Email Card -->
+      <a href="#" class="support-card">
+        <i class="bi bi-envelope-fill"></i>
+        <h6 class="mt-3">Email Us</h6>
+        <p class="small text-muted">Send us a ticket via email</p>
+      </a>
+    </div>
+
+    <!-- Direct Contact Info -->
+    <div class="contact-info-section mt-4 mb-3 shadow-sm">
+      <h5 class="text-center">Still need help?</h5>
+      <ul class="list-group list-group-flush mt-3 border rounded-3">
+        <li class="list-group-item d-flex align-items-center">
+          <i class="bi bi-telephone-fill me-3"></i>
+          <div>
+            <strong>Call Us:</strong> +1 (234) 567-890
+          </div>
+        </li>
+        <li class="list-group-item d-flex align-items-center">
+          <i class="bi bi-clock-fill me-3"></i>
+          <div>
+            <strong>Hours:</strong> 9:00 AM - 7:00 PM (Mon-Sat)
+          </div>
+        </li>
+      </ul>
+    </div>
+  </main>
+  <app-footer></app-footer>
+</div>

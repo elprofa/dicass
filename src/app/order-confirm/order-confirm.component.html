@@ -1,0 +1,51 @@
+  <!-- Main Body Wrapper -->
+  <div class="p-0">
+
+    <!-- Main Content -->
+    <main class="order-confirm-wrapper">
+
+      <!-- This is the top part with the background and animated checkmark -->
+      <div class="confirmation-header">
+        <!-- Animated Checkmark SVG -->
+        <svg class="animated-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+          <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none" />
+          <path class="checkmark-path" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+        </svg>
+
+        <!-- Confetti Elements for Animation -->
+        <div class="confetti">
+          <div class="confetti-piece"></div>
+          <div class="confetti-piece"></div>
+          <div class="confetti-piece"></div>
+          <div class="confetti-piece"></div>
+          <div class="confetti-piece"></div>
+          <div class="confetti-piece"></div>
+          <div class="confetti-piece"></div>
+          <div class="confetti-piece"></div>
+          <div class="confetti-piece"></div>
+          <div class="confetti-piece"></div>
+          <div class="confetti-piece"></div>
+          <div class="confetti-piece"></div>
+          <div class="confetti-piece"></div>
+          <div class="confetti-piece"></div>
+        </div>
+      </div>
+
+      <!-- This is the content "sheet" that slides up -->
+      <div class="confirmation-content-sheet">
+        <h3 class="fw-bold">Order Placed Successfully!</h3>
+        <p class="text-muted mt-2">We will notify you once your order is on its way.</p>
+
+        <div class="order-number-box">
+          <span>Your Order Number</span>
+          <strong>#001</strong>
+        </div>
+
+        <div class="d-grid gap-2 mt-4">
+          <a routerLink="/orders" class="btn btn-primary">Track My Order</a>
+          <a routerLink="/home" class="btn btn-outline-secondary">Continue Shopping</a>
+        </div>
+      </div>
+
+    </main>
+  </div>

@@ -1,0 +1,161 @@
+<!-- Note: This template has been converted to an Angular component fragment.
+     Include global CSS/JS (Bootstrap, theme CSS/JS) in `index.html` or `angular.json`.
+-->
+
+<app-sidebar></app-sidebar>
+
+<!-- Header + Search -->
+<section class="homepage-hero sticky-top">
+  <header class="d-flex align-items-center gap-3 container-fluid">
+    <button class="btn btn-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
+      <i class="bi bi-list"></i>
+    </button>
+
+    <div class="location-display">
+      <div class="location-text">Delivery in 8 minutes</div>
+      <a [routerLink]="['/add-location']" class="text-decoration-none text-white-50 fs-13">
+        <i class="bi bi-geo-alt-fill"></i>
+        <span>123 Main St, New York</span>
+        <i class="bi bi-chevron-down"></i>
+      </a>
+    </div>
+
+    <div class="header-actions">
+      <a [routerLink]="['/cart']" class="btn btn-icon notification-indicator"><i class="bi bi-cart"></i></a>
+      <a [routerLink]="['/notifications']" class="btn btn-icon notification-indicator"><i class="bi bi-bell"></i></a>
+    </div>
+  </header>
+
+  <div class="container-fluid">
+    <div class="search-bar-hero pt-2">
+      <a class="text-decoration-none" [routerLink]="['/search-list']">
+        <div class="input-group rounded-pill overflow-hidden">
+          <span class="input-group-text ps-3 pe-0"><i class="bi bi-search"></i></span>
+          <input type="text" class="form-control shadow-none" placeholder="Search for vegetables, fruits...">
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<main class="pb-5 mb-5 pt-3">
+    <section class="homepage-section pb-4">
+        <div class="container-fluid p-0">
+        <div class="section-header px-3 pb-3">
+            <h5 class="section-title m-0 fw-bold">Par catégories</h5>
+            <a class="text-decoration-none text-primary" [routerLink]="['/search-list']">See all</a>
+        </div>
+
+        <div *ngIf="errorMsg" class="alert alert-danger mx-3 my-2">
+            {{ errorMsg }}
+        </div>
+
+        <div class="category-scroll-wrapper px-3">
+            <a *ngFor="let c of categories" class="category-card" [routerLink]="[c.route]">
+            <img [src]="c.img" [alt]="c.title">
+            <h6>{{ c.title }}</h6>
+            </a>
+        </div>
+        </div>
+    </section>
+    <!-- Shop by Category -->
+    <section class="homepage-section pb-4">
+    <div class="container-fluid p-0">
+      <div class="section-header px-3 pb-3">
+        <h5 class="section-title m-0 fw-bold">Par Magasins</h5>
+        <a [routerLink]="['/search-list']" class="text-decoration-none text-primary">See all</a>
+      </div>
+      <div class="category-scroll-wrapper px-3">
+        <a *ngFor="let s of stores" class="category-card" [routerLink]="[s.route]">
+          <img class="store-img p-0 border rounded-2" [src]="s.img" [alt]="s.title">
+          <h6>{{ s.title }}</h6>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <app-footer></app-footer>
+
+  <section class="homepage-section pb-4">
+    <div class="container-fluid p-0">
+      <div class="section-header px-3 pb-3">
+        <h5 class="section-title m-0 fw-bold">Meilleures offres aujourd'hui</h5>
+        <a [routerLink]="['/offers']" class="text-decoration-none text-primary">Voir tout</a>
+      </div>
+      <div class="deals-scroll-wrapper px-3">
+        <div class="store-product-card" *ngFor="let p of products">
+          <div class="card-image-top">
+            <img [src]="p.img" [alt]="p.name">
+            <span *ngIf="p.promotion && p.promotion > 0" class="sale-badge">-{{ p.promotion }}%</span>
+          </div>
+          <div class="card-body">
+            <h6 class="product-title">{{ p.name }}</h6>
+            <p class="product-meta">{{ p.meta || '' }}</p>
+            <p class="product-price">
+              <span *ngIf="p.promotion && p.promotion > 0">
+                ${{ (p.price * (1 - p.promotion / 100)).toFixed(2) }}
+                <small class="text-muted text-decoration-line-through">${{ p.price }}</small>
+              </span>
+              <span *ngIf="!p.promotion || p.promotion == 0">${{ p.price }}</span>
+            </p>
+          </div>
+          <div class="card-footer">
+            <a [routerLink]="['/cart']" class="btn btn-primary add-to-cart-btn"><i class="bi bi-plus-lg"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shop by Recipe Section -->
+  <section class="homepage-section mb-4">
+    <div class="container-fluid p-0">
+      <div class="section-header px-3 pb-3">
+        <h5 class="section-title m-0 fw-bold">Par lot</h5>
+        <a [routerLink]="['/offers']" class="text-decoration-none text-primary">Voir tout</a>
+      </div>
+      <div class="recipe-scroll-wrapper px-3">
+        <a *ngFor="let lot of lots" [routerLink]="['/store']" class="recipe-card">
+          <img [src]="lot.img" [alt]="lot.nom">
+          <div class="recipe-overlay"></div>
+          <div class="recipe-info">
+            <h4 class="fw-bold mb-0">{{ lot.nom }}</h4>
+            <span class="text-white-50">${{ lot.prix }}</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Promo Banners -->
+  <section class="homepage-section mb-4">
+    <div class="container-fluid p-0">
+      <div class="brand-scroll-wrapper px-3">
+        <div class="promo-banner banner-1 d-flex align-items-center gap-3 p-3 rounded-3">
+          <i class="bi bi-award text-white h2 m-0"></i>
+          <div>
+            <h6 class="mb-1 text-nowrap text-white">100% frais</h6>
+            <p class="m-0 fs-10 text-muted text-nowrap text-white-50">Nous garantissons la qualité de tous nos produits.</p>
+          </div>
+        </div>
+        <div class="promo-banner banner-2 d-flex align-items-center gap-3 p-3 rounded-3">
+          <i class="bi bi-truck text-white h2 m-0"></i>
+          <div>
+            <h6 class="mb-1 text-nowrap text-white">Livraison rapide</h6>
+            <p class="m-0 fs-10 text-muted text-nowrap text-white-50">Recevez vos courses en aussi peu que 1 heure.</p>
+          </div>
+        </div>
+        <div class="promo-banner bg-dark d-flex align-items-center gap-3 p-3 rounded-3">
+          <i class="bi bi-tag text-white h2 m-0"></i>
+          <div>
+            <h6 class="mb-1 text-nowrap text-white">Excellent rapport qualité-prix</h6>
+            <p class="m-0 fs-10 text-muted text-nowrap text-white-50">Nous offrons des prix compétitifs sur des milliers d'articles .</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+<app-footer></app-footer>
+

@@ -1,0 +1,70 @@
+  <!-- Sidebar (Offcanvas) -->
+<app-sidebar></app-sidebar>
+
+  <!-- Main Body Wrapper -->
+  <div class="body-wrap">
+    <!-- Header -->
+    <header class="app-header">
+      <button class="btn btn-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
+        <i class="bi bi-list"></i>
+      </button>
+      <a class="navbar-brand-custom" routerLink="/addresses">My Addresses</a>
+      <div class="header-actions">
+        <a routerLink="/search" class="btn btn-icon">
+          <i class="bi bi-search"></i>
+        </a>
+        <a routerLink="/notifications" class="btn btn-icon notification-indicator">
+          <i class="bi bi-bell"></i>
+        </a>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container-fluid mt-3">
+
+      <div class="payment-card default-card">
+        <div class="card-brand-logo border rounded-3 d-flex align-items-center justify-content-center">
+          <i class="bi bi-house"></i>
+        </div>
+
+        <div class="card-details">
+          <h6 class="mb-0">Home - 123 Main Street</h6>
+          <small class="text-muted">Apt 4B, New York, 10001</small>
+        </div>
+        <span class="default-indicator"><i class="bi bi-check-circle-fill me-1"></i> Default</span>
+        <div class="dropdown" [class.show]="showDropdown1" (mouseleave)="showDropdown1 = false">
+          <button class="btn btn-icon" type="button" (click)="showDropdown1 = !showDropdown1">
+            <i class="bi bi-three-dots-vertical"></i>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end" [class.show]="showDropdown1">
+            <li><a class="dropdown-item" href="#">Edit</a></li>
+            <li><a class="dropdown-item text-danger" href="#">Delete</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="payment-card">
+        <div class="card-brand-logo border rounded-3 d-flex align-items-center justify-content-center">
+          <i class="bi bi-briefcase"></i>
+        </div>
+        <div class="card-details">
+          <h6 class="mb-0">Work</h6>
+          <small class="text-muted">Apt 4B, New York, 10001</small>
+        </div>
+        <div class="dropdown ms-auto" [class.show]="showDropdown2" (mouseleave)="showDropdown2 = false">
+          <button class="btn btn-icon" type="button" (click)="showDropdown2 = !showDropdown2">
+            <i class="bi bi-three-dots-vertical"></i>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end" [class.show]="showDropdown2">
+            <li><a class="dropdown-item" href="#">Edit</a></li>
+            <li><a class="dropdown-item text-danger" href="#">Delete</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Add New Address Button -->
+      <a routerLink="/add-address" class="btn btn-primary w-100 mt-3">
+        <i class="bi bi-plus-circle-fill me-2"></i>Add New Address
+      </a>
+    </main>
+  </div>
+  <app-footer></app-footer>

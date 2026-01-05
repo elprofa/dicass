@@ -1,0 +1,24 @@
+/* Styles for footer navigation */
+.footer-nav {
+  display: flex;
+  justify-content: space-around;
+  background: #fff;
+  border-top: 1px solid #eee;
+  padding: 10px 0;
+}
+.footer-nav a {
+  color: #333;
+  text-align: center;
+  text-decoration: none;
+  flex: 1;
+}
+.footer-nav a.active {
+  color: #007bff;
+}
+.footer-nav a.active i {
+  color: #007bff;
+}
+.footer-nav i {
+  display: block;
+  font-size: 1.5em;
+}

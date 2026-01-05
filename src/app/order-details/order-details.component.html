@@ -1,0 +1,120 @@
+<app-sidebar></app-sidebar>
+
+  <!-- Main Body Wrapper -->
+  <div class="body-wrap">
+    <!-- Header -->
+    <header class="app-header">
+      <button class="btn btn-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
+        <i class="bi bi-list"></i>
+      </button>
+
+      <a class="navbar-brand-custom" routerLink="/orders">
+        <div class="d-flex flex-column">
+          <h6 class="fw-bold m-0">Order Details</h6>
+          <small class="text-muted fs-10 fw-normal">#0222</small>
+        </div>
+      </a>
+
+      <div class="header-actions">
+        <a routerLink="/search" class="btn btn-icon">
+          <i class="bi bi-search"></i>
+        </a>
+        <a routerLink="/notifications" class="btn btn-icon notification-indicator">
+          <i class="bi bi-bell"></i>
+        </a>
+      </div>
+    </header>
+
+    <main class="container-fluid mt-3">
+
+      <!-- Live Order Tracker -->
+      <div class="order-tracker mb-3 pt-1">
+        <div class="step completed">
+          <div class="step-icon"><i class="bi bi-receipt"></i></div>
+          <div class="step-label">Placed</div>
+        </div>
+        <div class="step-line"></div>
+        <div class="step active">
+          <div class="step-icon"><i class="bi bi-box-seam"></i></div>
+          <div class="step-label">Processing</div>
+        </div>
+        <div class="step-line"></div>
+        <div class="step">
+          <div class="step-icon"><i class="bi bi-truck"></i></div>
+          <div class="step-label">On way</div>
+        </div>
+        <div class="step-line"></div>
+        <div class="step">
+          <div class="step-icon"><i class="bi bi-house-door"></i></div>
+          <div class="step-label">Delivered</div>
+        </div>
+      </div>
+
+      <!-- Delivery Details Card -->
+      <div class="order-details-card mb-3">
+        <h6 class="card-title-section">Delivery Details</h6>
+        <div class="info-row">
+          <span class="info-label">Placed on</span>
+          <span class="info-value">Oct 21, 2023</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Address</span>
+          <span class="info-value">123 Main Street, New York</span>
+        </div>
+      </div>
+
+      <!-- Items in Order Card -->
+      <div class="order-details-card mb-3">
+        <h6 class="card-title-section">Items in Order (2)</h6>
+        <ul class="item-list">
+          <!-- Item 1 -->
+          <li class="item-entry">
+            <img src="assets/img/1.jpg" alt="Product">
+            <div class="item-info">
+              <p class="item-name">1x Fresh Broccoli (1 kg)</p>
+              <p class="item-price">$2.99</p>
+            </div>
+          </li>
+          <!-- Item 2 -->
+          <li class="item-entry">
+            <img src="assets/img/2.jpg" alt="Product">
+            <div class="item-info">
+              <p class="item-name">2x Organic Carrots (500g)</p>
+              <p class="item-price">$2.98</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Payment Summary Card -->
+      <div class="order-details-card">
+        <h6 class="card-title-section">Payment Summary</h6>
+        <div class="info-row">
+          <span class="info-label">Subtotal</span>
+          <span class="info-value">$5.97</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Delivery Fee</span>
+          <span class="info-value">$2.00</span>
+        </div>
+        <div class="info-row text-danger">
+          <span class="info-label">Discount</span>
+          <span class="info-value">-$0.50</span>
+        </div>
+        <hr>
+        <div class="info-row total-row">
+          <span class="info-label">Total Paid (Visa •••• 1234)</span>
+          <span class="info-value">$7.47</span>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="d-grid gap-2 my-4">
+        <a routerLink="/support" class="btn btn-outline-secondary">Get Help with this Order</a>
+        <a routerLink="/cart" class="btn btn-primary">Reorder Items</a>
+      </div>
+
+    </main>
+  </div>
+
+  <app-footer></app-footer>

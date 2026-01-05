@@ -1,0 +1,83 @@
+<div class="body-wrap">
+  <app-sidebar></app-sidebar>
+  <!-- Header -->
+  <header class="app-header">
+    <button class="btn btn-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
+      <i class="bi bi-list"></i>
+    </button>
+    <a class="navbar-brand-custom" routerLink="/home">FreshCart</a>
+    <div class="header-actions">
+      <a routerLink="/search" class="btn btn-icon">
+        <i class="bi bi-search"></i>
+      </a>
+      <a routerLink="/notifications" class="btn btn-icon notification-indicator">
+        <i class="bi bi-bell"></i>
+      </a>
+    </div>
+  </header>
+
+  <main class="container-fluid mt-3">
+
+    <!-- User Profile Card -->
+    <div class="settings-profile-card">
+      <img src="assets/img/user.jpg" alt="User Avatar" class="profile-avatar">
+      <div>
+        <h5 class="mb-0">John Doe</h5>
+        <p class="text-muted m-0"><small><a href="#">[email&#160;protected]</a></small></p>
+      </div>
+      <a routerLink="/edit-profile" class="btn btn-sm btn-outline-primary ms-auto">Edit Profile</a>
+    </div>
+
+    <!-- Account Settings Group -->
+    <div class="settings-group">
+      <h6 class="settings-group-title">Account</h6>
+      <div class="list-group list-group-flush rounded-3 shadow-sm mb-4">
+        <a routerLink="/addresses" class="list-group-item list-group-item-action settings-item">
+          <div class="settings-icon-wrapper"><i class="bi bi-geo-alt"></i></div>
+          <span>Manage Addresses</span>
+          <i class="bi bi-chevron-right ms-auto"></i>
+        </a>
+        <a routerLink="/payment" class="list-group-item list-group-item-action settings-item">
+          <div class="settings-icon-wrapper"><i class="bi bi-credit-card"></i></div>
+          <span>Payment Methods</span>
+          <i class="bi bi-chevron-right ms-auto"></i>
+        </a>
+        <a routerLink="/notification-settings" class="list-group-item list-group-item-action settings-item">
+          <div class="settings-icon-wrapper"><i class="bi bi-bell"></i></div>
+          <span>Notification Settings</span>
+          <i class="bi bi-chevron-right ms-auto"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- More Information Group -->
+    <div class="settings-group">
+      <h6 class="settings-group-title">More</h6>
+      <div class="list-group list-group-flush rounded-3 shadow-sm">
+        <a href="#" class="list-group-item list-group-item-action settings-item">
+          <div class="settings-icon-wrapper"><i class="bi bi-info-circle"></i></div>
+          <span>About Us</span>
+          <i class="bi bi-chevron-right ms-auto"></i>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action settings-item">
+          <div class="settings-icon-wrapper"><i class="bi bi-file-text"></i></div>
+          <span>Terms & Conditions</span>
+          <i class="bi bi-chevron-right ms-auto"></i>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action settings-item">
+          <div class="settings-icon-wrapper"><i class="bi bi-shield-check"></i></div>
+          <span>Privacy Policy</span>
+          <i class="bi bi-chevron-right ms-auto"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Logout Button -->
+    <div class="my-4 text-center">
+      <a routerLink="/login" class="btn btn-logout w-100">
+        <i class="bi bi-box-arrow-left me-2"></i>Logout
+      </a>
+    </div>
+  </main>
+  <app-footer></app-footer>
+</div>

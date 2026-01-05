@@ -1,0 +1,101 @@
+<app-sidebar></app-sidebar>
+<div class="body-wrap">
+  <!-- Header -->
+  <header class="app-header">
+    <button class="btn btn-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
+      <i class="bi bi-list"></i>
+    </button>
+    <a class="navbar-brand-custom" routerLink="/home">FreshCart</a>
+    <div class="header-actions">
+      <a routerLink="/search" class="btn btn-icon">
+        <i class="bi bi-search"></i>
+      </a>
+      <a routerLink="/notifications" class="btn btn-icon notification-indicator">
+        <i class="bi bi-bell"></i>
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container-fluid mt-3">
+    <!-- Interactive Credit Card Preview -->
+    <div class="credit-card-preview">
+      <div class="card-logo">
+        <i class="bi bi-pci-card"></i>
+      </div>
+      <div class="card-chip"></div>
+      <div class="card-number-preview">
+        <span>4532</span> <span>9876</span> <span>5432</span> <span>1098</span>
+      </div>
+      <div class="d-flex justify-content-between">
+        <div class="card-name-preview">
+          <small>Card Holder</small>
+          <div>JOHN DOE</div>
+        </div>
+        <div class="card-expiry-preview text-end">
+          <small>Expires</small>
+          <div>12/28</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add Card Form -->
+    <div class="add-card-form p-3">
+      <form>
+        <div class="input-group mb-3">
+          <span class="input-group-text"><i class="bi bi-credit-card-2-front"></i></span>
+          <div class="form-floating flex-grow-1">
+            <input value="4532 9876 5432 1098" type="text" class="form-control" id="cardNumber"
+              placeholder="Card Number">
+            <label for="cardNumber">Card Number</label>
+          </div>
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text"><i class="bi bi-person"></i></span>
+          <div class="form-floating flex-grow-1">
+            <input value="John Doe" type="text" class="form-control" id="cardHolder" placeholder="Cardholder Name">
+            <label for="cardHolder">Cardholder Name</label>
+          </div>
+        </div>
+
+        <div class="row g-3">
+          <div class="col-7">
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-calendar-event"></i></span>
+              <div class="form-floating flex-grow-1">
+                <input value="12/28" type="text" class="form-control" id="cardExpiry" placeholder="MM/YY">
+                <label for="cardExpiry">Expiry (MM/YY)</label>
+              </div>
+            </div>
+          </div>
+          <div class="col-5">
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-lock"></i></span>
+              <div class="form-floating flex-grow-1">
+                <input value="123" type="text" class="form-control" id="cardCvv" placeholder="CVV">
+                <label for="cardCvv">CVV</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-check mt-3 mb-3">
+          <input class="form-check-input" type="checkbox" id="saveCardCheck" checked>
+          <label class="form-check-label" for="saveCardCheck">
+            Save this card for future payments
+          </label>
+        </div>
+
+        <a routerLink="/checkout" class="btn btn-primary btn-lg w-100">Add Card Securely</a>
+      </form>
+    </div>
+
+    <!-- Security Footer -->
+    <div class="secure-footer my-3">
+      <i class="bi bi-shield-lock-fill"></i>
+      <span>Your payment information is safe and secure.</span>
+    </div>
+  </main>
+</div>
+<app-footer></app-footer>

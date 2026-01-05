@@ -1,0 +1,90 @@
+<div class="body-wrap">
+  <app-sidebar></app-sidebar>
+  <!-- Header -->
+  <header class="search-header">
+    <div class="d-flex align-items-center">
+      <a routerLink="/" class="btn-icon me-2"><i class="bi bi-arrow-left"></i></a>
+      <div class="input-group rounded-pill overflow-hidden">
+        <input type="search" class="form-control shadow-none p-0 bg-light border-0 ps-3"
+          placeholder="Search products..." [value]="searchTerm" (input)="onSearch($event.target.value)">
+        <button class="btn-icon" type="button" (click)="onSearch('')"><i class="bi bi-x-lg"></i></button>
+      </div>
+      <a routerLink="/search" class="btn-icon ms-2"><i class="bi bi-search"></i></a>
+      <a routerLink="/notifications" class="btn-icon ms-2"><i class="bi bi-bell"></i></a>
+      <a routerLink="/cart" class="btn-icon ms-2"><i class="bi bi-cart"></i></a>
+      <button class="btn-icon ms-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#filterOffcanvas">
+        <i class="bi bi-sliders"></i>
+      </button>
+    </div>
+  </header>
+
+  <main class="container-fluid pt-3">
+    <!-- Search Results Summary -->
+    <div class="search-summary mb-3" *ngIf="!loading">
+      <p class="mb-0">Affichage <strong>{{ filteredProducts.length }}</strong> résultats pour "{{ searchTerm }}"</p>
+    </div>
+    <div class="row g-3">
+      <div class="col-6" *ngFor="let p of filteredProducts">
+        <div class="search-product-card">
+          <img [src]="p.img" [alt]="p.name">
+          <div class="card-body">
+            <p class="product-price">${{ p.price }}</p>
+            <h6 class="product-title">{{ p.name }}</h6>
+            <p class="product-meta">{{ p.meta }}</p>
+          </div>
+          <div class="card-footer position-relative">
+            <button class="btn btn-sm btn-primary w-100" (click)="addToCart(p)" [disabled]="addCartLoading[p.id || p.name] || addCartMessage[p.id || p.name] === 'ok'">
+              <span *ngIf="addCartMessage[p.id || p.name] === 'ok'">OK</span>
+              <span *ngIf="!addCartLoading[p.id || p.name] && addCartMessage[p.id || p.name] !== 'ok'">Ajouter au panier</span>
+              <span *ngIf="addCartLoading[p.id || p.name] && addCartMessage[p.id || p.name] !== 'ok'" class="spinner-border spinner-border-sm"></span>
+            </button>
+            <div *ngIf="addCartMessage[p.id || p.name]" class="alert alert-success py-1 px-2 mt-2 mb-0 small">{{ addCartMessage[p.id || p.name] }}</div>
+            <div *ngIf="addCartError[p.id || p.name]" class="alert alert-danger py-1 px-2 mt-2 mb-0 small">{{ addCartError[p.id || p.name] }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- No Results State (to be shown when search yields no results) -->
+    <div class="empty-state mt-5" *ngIf="!loading && filteredProducts.length === 0">
+      <i class="bi bi-search-heart"></i>
+      <h4>Aucun résultat trouvé</h4>
+      <p class="text-muted">Aucun produit ne correspond à votre recherche.</p>
+    </div>
+    <div *ngIf="loading" class="global-loader"><div class="spinner"></div></div>
+  </main>
+
+  <!-- Filter Offcanvas (Bottom Sheet) -->
+  <div class="offcanvas offcanvas-bottom" tabindex="-1" id="filterOffcanvas" style="height: auto;">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title">Filter Results</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <!-- Filter by Category -->
+      <div class="mb-4">
+        <label class="form-label fw-bold">Category</label>
+        <div class="btn-group w-100" role="group">
+          <input type="radio" class="btn-check" name="filterCat" id="catAll" [(ngModel)]="filterCategory" value="all" autocomplete="off">
+          <label class="btn btn-outline-secondary" for="catAll">All</label>
+          <input type="radio" class="btn-check" name="filterCat" id="catDairy" [(ngModel)]="filterCategory" value="dairy" autocomplete="off">
+          <label class="btn btn-outline-secondary" for="catDairy">Dairy</label>
+          <input type="radio" class="btn-check" name="filterCat" id="catProduce" [(ngModel)]="filterCategory" value="produce" autocomplete="off">
+          <label class="btn btn-outline-secondary" for="catProduce">Produce</label>
+        </div>
+      </div>
+      <!-- Filter by Price -->
+      <div class="mb-4">
+        <label for="priceRange" class="form-label fw-bold">Price Range</label>
+        <input type="range" class="form-range" min="0" max="50" step="1" id="priceRange" [(ngModel)]="filterPrice">
+        <div class="text-center small">Jusqu'à {{ filterPrice }} €</div>
+      </div>
+      <!-- Action Buttons -->
+      <div class="d-grid gap-2">
+        <button class="btn btn-primary" type="button" (click)="applyFilters()" data-bs-dismiss="offcanvas">Appliquer les filtres</button>
+        <button class="btn btn-light" type="button" (click)="resetFilters()">Réinitialiser</button>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>

@@ -1,0 +1,80 @@
+<app-sidebar></app-sidebar>
+<div class="body-wrap">
+  <!-- Header -->
+  <header class="app-header">
+    <button class="btn btn-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
+      <i class="bi bi-list"></i>
+    </button>
+    <a class="navbar-brand-custom" routerLink="/home">
+      <div class="d-flex flex-column">
+        <h6 class="fw-bold m-0">Notification Settings</h6>
+        <small class="text-muted fs-10 fw-normal">Manage alerts you receive from us.</small>
+      </div>
+    </a>
+    <div class="header-actions">
+      <a routerLink="/search" class="btn btn-icon">
+        <i class="bi bi-search"></i>
+      </a>
+      <a routerLink="/notifications" class="btn btn-icon notification-indicator">
+        <i class="bi bi-bell"></i>
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container-fluid mt-4">
+    <!-- Master Toggle -->
+    <div class="master-toggle-card">
+      <div class="notification-text">
+        <h6 class="mb-0">All Notifications</h6>
+      </div>
+      <div class="form-check form-switch notification-toggle">
+        <input class="form-check-input" type="checkbox" role="switch" id="allNotificationsSwitch" checked>
+      </div>
+    </div>
+
+    <!-- Individual Settings List -->
+    <div class="notification-settings-list">
+      <!-- Order Updates Setting -->
+      <div class="notification-item">
+        <div class="notification-icon2">
+          <i class="bi bi-box-seam-fill"></i>
+        </div>
+        <div class="notification-text">
+          <h6 class="mb-1">Order Updates</h6>
+          <p class="small text-muted">Get notified about your order status.</p>
+        </div>
+        <div class="form-check form-switch notification-toggle">
+          <input class="form-check-input" type="checkbox" role="switch" checked>
+        </div>
+      </div>
+      <!-- Special Offers Setting -->
+      <div class="notification-item">
+        <div class="notification-icon2">
+          <i class="bi bi-tags-fill"></i>
+        </div>
+        <div class="notification-text">
+          <h6 class="mb-1">Special Offers</h6>
+          <p class="small text-muted">Receive updates on deals and coupons.</p>
+        </div>
+        <div class="form-check form-switch notification-toggle">
+          <input class="form-check-input" type="checkbox" role="switch" checked>
+        </div>
+      </div>
+      <!-- App Updates Setting -->
+      <div class="notification-item">
+        <div class="notification-icon2">
+          <i class="bi bi-arrow-up-circle-fill"></i>
+        </div>
+        <div class="notification-text">
+          <h6 class="mb-1">App Updates</h6>
+          <p class="small text-muted">Know when new features are available.</p>
+        </div>
+        <div class="form-check form-switch notification-toggle">
+          <input class="form-check-input" type="checkbox" role="switch">
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<app-footer></app-footer>

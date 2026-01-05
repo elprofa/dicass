@@ -1,0 +1,123 @@
+  <app-sidebar></app-sidebar>
+
+  <!-- Main Body Wrapper -->
+  <div class="body-wrap">
+    <!-- Header -->
+    <header class="app-header">
+      <button class="btn btn-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
+        <i class="bi bi-list"></i>
+      </button>
+      <a class="navbar-brand-custom" routerLink="/checkout">Review Your Order</a>
+      <div class="header-actions">
+        <a routerLink="/search" class="btn btn-icon">
+          <i class="bi bi-search"></i>
+        </a>
+        <a routerLink="/notifications" class="btn btn-icon notification-indicator">
+          <i class="bi bi-bell"></i>
+        </a>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container-fluid mt-3">
+
+      <!-- Unified Checkout Card -->
+      <div class="checkout-card bg-white rounded-4 shadow-sm mb-3">
+        <!-- Section 1: Delivery Details -->
+        <div class="checkout-section border-bottom p-3">
+          <div class="section-header">
+            <div class="section-icon">1</div>
+            <h6>Delivery Details</h6>
+            <a routerLink="/addresses" class="ms-auto text-decoration-none text-primary">Change</a>
+          </div>
+          <div class="section-body pt-3">
+            <div class="d-flex align-items-center justify-content-between gap-3">
+              <div class="card-brand-logo border rounded-pill d-flex align-items-center justify-content-center">
+                <i class="bi bi-house"></i>
+              </div>
+              <div class="card-details">
+                <h6 class="mb-0"><strong>Home:</strong> 123 Main Street, New York</h6>
+                <small class="text-muted"><strong>Time:</strong> Today, 4:00 PM - 6:00 PM</small>
+              </div>
+              <span class="default-indicator"><i class="bi bi-check-circle-fill me-1"></i> Default</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 2: Items in Order -->
+        <div class="checkout-section border-bottom p-3">
+          <div class="section-header">
+            <div class="section-icon">2</div>
+            <h6>Items in Cart (3)</h6>
+            <a class="ms-auto text-decoration-none text-primary" href="#" (click)="$event.preventDefault(); showItems.set(!showItems())">
+              {{ showItems() ? 'Hide Items' : 'Show Items' }}
+            </a>
+          </div>
+          <div class="pt-3" *ngIf="showItems()">
+            <div class="section-body">
+              <ul class="item-list-checkout">
+                <li><span>1x Fresh Broccoli</span> <span>$2.99</span></li>
+                <li><span>2x Organic Carrots</span> <span>$2.98</span></li>
+                <li><span>1x Red Apples</span> <span>$3.50</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 3: Payment Method -->
+        <div class="checkout-section p-3">
+          <div class="section-header">
+            <div class="section-icon">3</div>
+            <h6>Payment Method</h6>
+            <a routerLink="/payment" class="ms-auto text-decoration-none text-primary">Change</a>
+          </div>
+          <div class="section-body pt-3">
+            <div class="d-flex align-items-center justify-content-between gap-3">
+              <div class="card-brand-logo border rounded-pill d-flex align-items-center justify-content-center">
+                <i class="bi bi-wallet2"></i>
+              </div>
+              <div class="card-details">
+                <h6 class="mb-0"><strong>Cash on Delivery</strong></h6>
+                <small class="text-muted">Pay in cash at the time of delivery</small>
+              </div>
+              <span class="default-indicator"><i class="bi bi-check-circle-fill me-1"></i> Default</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Promo Code Section -->
+      <div class="promo-code-card">
+        <div class="input-group">
+          <span class="input-group-text"><i class="bi bi-ticket-detailed"></i></span>
+          <input type="text" class="form-control" placeholder="Enter a promo code">
+          <button class="btn btn-outline-secondary" type="button">Apply</button>
+        </div>
+      </div>
+    </main>
+
+    <!-- This is the new, improved sticky footer -->
+    <div class="fixed-bottom bg-white p-3 shadow">
+      <!-- Payment Summary -->
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <span>Subtotal</span>
+        <span class="fw-bold">$9.47</span>
+      </div>
+      <div class="d-flex justify-content-between align-items-center mb-2 text-muted small">
+        <span>Delivery Fee</span>
+        <span>$2.00</span>
+      </div>
+      <div class="d-flex justify-content-between align-items-center mb-3 text-muted small">
+        <span>Discount</span>
+        <span class="text-success">-$0.00</span>
+      </div>
+      <!-- Main Action Button -->
+      <a routerLink="/order-confirm" class="btn btn-primary btn-lg w-100 d-flex justify-content-between">
+        <span>Place Order</span>
+        <span class="fw-bold">$11.47</span>
+      </a>
+      <div class="secure-checkout-footer">
+        <i class="bi bi-shield-lock-fill"></i> Secure Checkout
+      </div>
+    </div>
+  </div>

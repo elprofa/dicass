@@ -1,0 +1,38 @@
+<app-sidebar></app-sidebar>
+<div class="body-wrap">
+  <!-- Header -->
+  <header class="app-header">
+    <button class="btn btn-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
+      <i class="bi bi-list"></i>
+    </button>
+    <a class="navbar-brand-custom" routerLink="/home">FreshCart</a>
+    <div class="header-actions">
+      <a routerLink="/search" class="btn btn-icon">
+        <i class="bi bi-search"></i>
+      </a>
+      <a routerLink="/notifications" class="btn btn-icon notification-indicator">
+        <i class="bi bi-bell"></i>
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="location-page-wrapper">
+    <!-- This is the top part with the background illustration -->
+    <div class="location-header">
+      <div class="location-illustration">
+        <i class="bi bi-geo-alt text-primary"></i>
+      </div>
+    </div>
+    <!-- This is the content "sheet" that slides up -->
+    <div class="location-content-sheet">
+      <h3 class="fw-bold">Enable Your Location</h3>
+      <p class="text-muted mt-2">To find the best stores and offers near you, please allow us to access your location.</p>
+      <div class="d-grid gap-2 mt-4">
+        <a routerLink="/add-address" class="btn btn-primary">Enable Location Services</a>
+        <a routerLink="/home" class="btn btn-outline-secondary">Maybe Later</a>
+      </div>
+    </div>
+  </main>
+</div>
+<app-footer></app-footer>

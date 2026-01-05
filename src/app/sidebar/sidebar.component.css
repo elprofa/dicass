@@ -1,0 +1,13 @@
+/* Styles for Sidebar component */
+.sidebar-profile {
+  background: #343a40;
+}
+.sidebar-heading {
+  font-weight: bold;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  color: #6c757d;
+}
+.sidebar-logout {
+  padding: 1rem;
+}

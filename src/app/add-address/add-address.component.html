@@ -1,0 +1,103 @@
+<div class="body-wrap">
+  <app-sidebar></app-sidebar>
+  <!-- Header -->
+  <header class="app-header">
+    <button class="btn btn-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
+      <i class="bi bi-list"></i>
+    </button>
+    <a class="navbar-brand-custom" routerLink="/home">FreshCart</a>
+    <div class="header-actions">
+      <a routerLink="/search" class="btn btn-icon">
+        <i class="bi bi-search"></i>
+      </a>
+      <a routerLink="/notifications" class="btn btn-icon notification-indicator">
+        <i class="bi bi-bell"></i>
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+
+    <!-- Map Preview Area -->
+    <div class="address-map-preview">
+      <!-- A background image is used via CSS to simulate a map -->
+    </div>
+
+    <!-- The main form content "sheet" -->
+    <div class="address-form-container">
+      <div class="text-center mb-4">
+        <h4 class="mb-1">Add a Delivery Address</h4>
+        <p class="text-muted">Enter your address details below.</p>
+      </div>
+
+      <form>
+        <div class="input-group mb-3">
+          <span class="input-group-text"><i class="bi bi-person"></i></span>
+          <div class="form-floating flex-grow-1">
+            <input value="John Doe" type="text" class="form-control" id="fullName" placeholder="John Doe">
+            <label for="fullName">Full Name</label>
+          </div>
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text"><i class="bi bi-building"></i></span>
+          <div class="form-floating flex-grow-1">
+            <input type="text" value="Flat No. 203, Green Heights" class="form-control" id="addressLine1"
+              placeholder="House No., Building Name">
+            <label for="addressLine1">House No., Building Name</label>
+          </div>
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text"><i class="bi bi-signpost-2"></i></span>
+          <div class="form-floating flex-grow-1">
+            <input type="text" value="Near City Park, MG Road" class="form-control" id="addressLine2"
+              placeholder="Street, Area">
+            <label for="addressLine2">Street, Area (Optional)</label>
+          </div>
+        </div>
+
+        <div class="row g-3 mb-4">
+          <div class="col-7">
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-geo"></i></span>
+              <div class="form-floating flex-grow-1">
+                <input value="Ludhiana" type="text" class="form-control" id="city" placeholder="e.g., New York">
+                <label for="city">City</label>
+              </div>
+            </div>
+          </div>
+          <div class="col-5">
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-mailbox"></i></span>
+              <div class="form-floating flex-grow-1">
+                <input value="560001" type="text" class="form-control" id="zipCode" placeholder="e.g., 10001">
+                <label for="zipCode">ZIP Code</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="address-type-selector">
+          <label class="form-label address-type-label">Save address as</label>
+          <div class="btn-group w-100" role="group">
+            <input type="radio" class="btn-check" name="addressType" id="typeHome" autocomplete="off" checked>
+            <label class="btn btn-outline-primary" for="typeHome">Home</label>
+
+            <input type="radio" class="btn-check" name="addressType" id="typeWork" autocomplete="off">
+            <label class="btn btn-outline-primary" for="typeWork">Work</label>
+
+            <input type="radio" class="btn-check" name="addressType" id="typeOther" autocomplete="off">
+            <label class="btn btn-outline-primary" for="typeOther">Other</label>
+          </div>
+        </div>
+
+        <div class="d-grid mt-4">
+          <a routerLink="/store" class="btn btn-primary btn-lg">Save Address</a>
+        </div>
+      </form>
+    </div>
+  </main>
+  <app-footer></app-footer>
+</div>

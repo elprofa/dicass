@@ -1,0 +1,79 @@
+<app-sidebar></app-sidebar>
+
+  <!-- Main Body Wrapper -->
+  <div class="body-wrap">
+    <!-- Header -->
+    <header class="app-header">
+      <button class="btn btn-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
+        <i class="bi bi-list"></i>
+      </button>
+      <a class="navbar-brand-custom" routerLink="/home">FreshCart</a>
+      <div class="header-actions">
+        <a routerLink="/search" class="btn btn-icon">
+          <i class="bi bi-search"></i>
+        </a>
+        <a routerLink="/notifications" class="btn btn-icon notification-indicator">
+          <i class="bi bi-bell"></i>
+        </a>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container-fluid mt-3">
+
+      <!-- Profile Header Card -->
+      <div class="profile-header-card">
+        <img src="assets/img/user.jpg" alt="User Avatar" class="profile-avatar2">
+        <div class="profile-info">
+          <h6 class="mb-0">wedo</h6>
+          <small class="text-muted mb-0"><a href="mailto:wedo@example.com">wedo@example.com</a></small>
+        </div>
+        <a routerLink="/edit-profile" class="btn btn-light btn-sm edit-profile-btn">
+          <i class="bi bi-pencil-square"></i>
+        </a>
+      </div>
+
+      <!-- Quick Stats Dashboard -->
+      <div class="profile-stats-grid">
+        <div class="stat-card">
+          <i class="bi bi-wallet2"></i>
+          <h6 class="mb-0 mt-2">$42.50</h6>
+          <p class="text-muted small m-0">Wallet</p>
+        </div>
+        <div class="stat-card">
+          <i class="bi bi-box-seam"></i>
+          <h6 class="mb-0 mt-2">12</h6>
+          <p class="text-muted small m-0">Orders</p>
+        </div>
+        <div class="stat-card">
+          <i class="bi bi-ticket-detailed"></i>
+          <h6 class="mb-0 mt-2">5</h6>
+          <p class="text-muted small m-0">Coupons</p>
+        </div>
+      </div>
+
+      <!-- Account Information List -->
+      <div class="profile-details-list">
+        <h6 class="settings-group-title">Account Information</h6>
+        <div class="list-group list-group-flush rounded-3 bg-white shadow-sm">
+          <div class="list-group-item profile-info-item p-3">
+            <div class="d-flex align-items-center">
+              <i class="bi bi-telephone"></i>
+              <span>Phone</span>
+            </div>
+            <span class="text-muted">+1 234 567 890</span>
+          </div>
+          <div class="list-group-item profile-info-item p-3">
+            <div class="d-flex align-items-center">
+              <i class="bi bi-calendar-check"></i>
+              <span>Joined</span>
+            </div>
+            <span class="text-muted">Oct 20, 2026</span>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <app-footer></app-footer>

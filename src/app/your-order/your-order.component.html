@@ -1,0 +1,113 @@
+<app-sidebar></app-sidebar>
+
+  <!-- Main Body Wrapper -->
+  <div class="body-wrap">
+    <!-- Header -->
+    <header class="app-header">
+      <button class="btn btn-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
+        <i class="bi bi-list"></i>
+      </button>
+      <a class="navbar-brand-custom" routerLink="/orders">My Orders</a>
+      <div class="header-actions">
+        <a routerLink="/search" class="btn btn-icon">
+          <i class="bi bi-search"></i>
+        </a>
+        <a routerLink="/notifications" class="btn btn-icon notification-indicator">
+          <i class="bi bi-bell"></i>
+        </a>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container-fluid mt-3">
+
+      <!-- Filter Tabs -->
+      <nav class="offers-nav">
+        <div class="nav nav-pills nav-justified" id="nav-tab" role="tablist">
+          <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#nav-ongoing"
+            type="button">Ongoing</button>
+          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#nav-completed" type="button">Completed</button>
+          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#nav-cancelled" type="button">Cancelled</button>
+        </div>
+      </nav>
+
+      <!-- Tab Content -->
+      <div class="tab-content mt-3" id="nav-tabContent">
+        <!-- Ongoing Orders Tab -->
+        <div class="tab-pane fade show active" id="nav-ongoing" role="tabpanel">
+          <!-- Order Card: In Progress -->
+          <div class="order-history-card">
+            <div class="card-header p-3">
+              <div class="status-icon in-progress">
+                <i class="bi bi-truck"></i>
+              </div>
+              <div class="header-info">
+                <h6 class="mb-0">Order #12345</h6>
+                <small class="text-muted">Placed on: 20 Oct 2023</small>
+              </div>
+              <span class="status-badge in-progress">On its way</span>
+            </div>
+            <div class="card-body p-3">
+              <div class="item-previews">
+                <img src="assets/img/1.jpg" alt="">
+                <img src="assets/img/2.jpg" alt="">
+                <img src="assets/img/3.jpg" alt="">
+              </div>
+              <div class="order-total">
+                <small>Total</small>
+                <p class="fw-bold mb-0">$10.47</p>
+              </div>
+            </div>
+            <div class="card-footer p-3 d-flex justify-content-between">
+              <a routerLink="/order-details" class="btn btn-sm btn-outline-secondary w-100">View Details</a>
+              <a routerLink="/order-details" class="btn btn-sm btn-primary w-100">Track Order</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Completed Orders Tab -->
+        <div class="tab-pane fade" id="nav-completed" role="tabpanel">
+          <!-- Order Card: Delivered -->
+          <div class="order-history-card">
+            <div class="card-header p-3">
+              <div class="status-icon delivered">
+                <i class="bi bi-check2-all"></i>
+              </div>
+              <div class="header-info">
+                <h6 class="mb-0">Order #12344</h6>
+                <small class="text-muted">Placed on: 18 Oct 2023</small>
+              </div>
+              <span class="status-badge delivered">Delivered</span>
+            </div>
+            <div class="card-body p-3">
+              <div class="item-previews">
+                <img src="assets/img/4.jpg" alt="">
+                <img src="assets/img/5.jpg" alt="">
+                <img src="assets/img/6.jpg" alt="">
+              </div>
+              <div class="order-total">
+                <small>Total</small>
+                <p class="fw-bold mb-0">$25.10</p>
+              </div>
+            </div>
+            <div class="card-footer p-3 d-flex justify-content-between">
+              <a routerLink="/order-details" class="btn btn-sm btn-outline-secondary w-100">View Details</a>
+              <a routerLink="/order-details" class="btn btn-sm btn-primary w-100">Reorder</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cancelled Orders Tab -->
+        <div class="tab-pane fade" id="nav-cancelled" role="tabpanel">
+          <!-- Empty State (can also be used for other tabs if empty) -->
+          <div class="empty-state mt-5">
+            <i class="bi bi-emoji-frown"></i>
+            <h4 class="text-body mb-2 mt-4">No Cancelled Orders</h4>
+            <p class="text-muted">You haven't cancelled any orders yet.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <app-footer></app-footer>

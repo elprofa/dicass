@@ -1,0 +1,86 @@
+<app-sidebar></app-sidebar>
+<div class="body-wrap">
+  <!-- Header -->
+  <header class="app-header">
+    <button class="btn btn-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
+      <i class="bi bi-list"></i>
+    </button>
+    <a class="navbar-brand-custom" routerLink="/home">
+      <div class="d-flex flex-column">
+        <h6 class="fw-bold m-0">My Coupons</h6>
+        <small class="text-muted fs-10 fw-normal">Apply codes for great discounts.</small>
+      </div>
+    </a>
+    <div class="header-actions">
+      <a routerLink="/search" class="btn btn-icon">
+        <i class="bi bi-search"></i>
+      </a>
+      <a routerLink="/notifications" class="btn btn-icon notification-indicator">
+        <i class="bi bi-bell"></i>
+      </a>
+    </div>
+  </header>
+
+  <main class="container-fluid mt-3">
+    <!-- Enter Coupon Code Bar -->
+    <div class="add-coupon-bar mb-4">
+      <div class="input-group gap-2">
+        <input type="text" class="form-control rounded-4" placeholder="Enter a coupon code">
+        <button class="btn btn-primary rounded-4" type="button">Apply</button>
+      </div>
+    </div>
+
+    <!-- Available Coupons -->
+    <div class="coupon-group">
+      <h6 class="settings-group-title">Available</h6>
+      <!-- Available Coupon Ticket -->
+      <div class="coupon-ticket shadow-sm">
+        <div class="coupon-icon">
+          <i class="bi bi-tags-fill"></i>
+        </div>
+        <div class="coupon-details">
+          <h5>10% OFF</h5>
+          <p class="text-muted mb-2">On all vegetable orders above $20.</p>
+          <button class="coupon-code-btn" data-coupon="VEGGIE10">
+            <span>VEGGIE10</span>
+            <small>Tap to Copy</small>
+          </button>
+        </div>
+      </div>
+      <!-- Another Available Coupon Ticket -->
+      <div class="coupon-ticket shadow-sm ">
+        <div class="coupon-icon">
+          <i class="bi bi-truck"></i>
+        </div>
+        <div class="coupon-details">
+          <h5>FREE DELIVERY</h5>
+          <p class="text-muted mb-2">On your first order. No minimum purchase.</p>
+          <button class="coupon-code-btn" data-coupon="FREEDEL">
+            <span>FREEDEL</span>
+            <small>Tap to Copy</small>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Used/Expired Coupons -->
+    <div class="coupon-group mt-4">
+      <h6 class="settings-group-title">Used / Expired</h6>
+      <!-- Expired Coupon Ticket -->
+      <div class="coupon-ticket expired border border-primary shadow-sm">
+        <div class="coupon-icon border-end">
+          <i class="bi bi-calendar-x-fill text-muted"></i>
+        </div>
+        <div class="coupon-details">
+          <h5>$5 OFF</h5>
+          <p class="text-muted mb-2">On any order above $50.</p>
+          <div class="coupon-code-btn">
+            <span>WELCOME5</span>
+            <small>Expired</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<app-footer></app-footer>

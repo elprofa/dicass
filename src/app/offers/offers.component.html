@@ -1,0 +1,94 @@
+<app-sidebar></app-sidebar>
+<div class="body-wrap">
+  <!-- Header -->
+  <header class="app-header">
+    <button class="btn btn-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
+      <i class="bi bi-list"></i>
+    </button>
+    <a class="navbar-brand-custom" routerLink="/home">
+      <div class="d-flex flex-column">
+        <h6 class="fw-bold m-0">Offers & Deals</h6>
+        <small class="text-muted fs-10 fw-normal">Great deals updated daily just for you!</small>
+      </div>
+    </a>
+    <div class="header-actions">
+      <a routerLink="/search" class="btn btn-icon">
+        <i class="bi bi-search"></i>
+      </a>
+      <a routerLink="/notifications" class="btn btn-icon notification-indicator">
+        <i class="bi bi-bell"></i>
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container-fluid mt-3">
+    <!-- Filter Tabs -->
+    <nav class="offers-nav">
+      <div class="nav nav-pills nav-justified" id="nav-tab" role="tablist">
+        <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#nav-all" type="button">All Offers</button>
+        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#nav-foryou" type="button">For You</button>
+        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#nav-grocery" type="button">Groceries</button>
+      </div>
+    </nav>
+    <!-- Tab Content -->
+    <div class="tab-content my-3" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="nav-all" role="tabpanel">
+        <!-- Featured Offer -->
+        <div class="featured-offer-card">
+          <img src="img/o4.png" alt="Dairy Offer">
+          <div class="offer-card-body">
+            <span class="offer-badge bg-primary text-white">DEAL OF THE DAY</span>
+            <h6 class="mt-2 pt-1 mb-1">Up to 50% OFF on Dairy Products</h6>
+            <p class="text-muted small">Stock up on milk, cheese, and yogurt now!</p>
+            <a routerLink="/search" class="btn btn-primary w-100">Shop Dairy Deals</a>
+          </div>
+        </div>
+        <!-- More Offers Grid -->
+        <div class="more-offers-section">
+          <h6 class="settings-group-title">More Great Deals</h6>
+          <div class="row g-3">
+            <!-- Offer 1 -->
+            <div class="col-6">
+              <div class="offer-card">
+                <img src="img/o3.png" alt="Juice Offer">
+                <div class="offer-card-body">
+                  <span class="offer-badge bg-success text-white">BOGO</span>
+                  <p class="offer-title">Buy 1 Get 1 Free on Organic Juices</p>
+                  <a routerLink="/search" class="btn btn-sm btn-outline-primary w-100">Shop Now</a>
+                </div>
+              </div>
+            </div>
+            <!-- Offer 2 -->
+            <div class="col-6">
+              <div class="offer-card">
+                <img src="img/o2.png" alt="Snacks Offer">
+                <div class="offer-card-body">
+                  <span class="offer-badge bg-warning text-dark">20% OFF</span>
+                  <p class="offer-title">Save 20% on all Chips & Cookies</p>
+                  <a routerLink="/search" class="btn btn-sm btn-outline-primary w-100">Shop Now</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Other tab panes would go here -->
+      <div class="tab-pane fade" id="nav-foryou" role="tabpanel">
+        <div class="empty-state mt-5">
+          <i class="bi bi-emoji-frown"></i>
+          <h4 class="text-body mb-2 mt-4">No Offers Right Now</h4>
+          <p class="text-muted">Check back soon—new deals are on the way!</p>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="nav-grocery" role="tabpanel">
+        <div class="empty-state mt-5">
+          <i class="bi bi-emoji-frown"></i>
+          <h4 class="text-body mb-2 mt-4">No Deals Available</h4>
+          <p class="text-muted">We’re updating offers daily. Stay tuned.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<app-footer></app-footer>

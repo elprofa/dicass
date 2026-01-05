@@ -1,0 +1,98 @@
+<app-sidebar></app-sidebar>
+
+  <!-- Main Body Wrapper -->
+  <div class="body-wrap">
+    <!-- Header -->
+    <header class="app-header">
+      <button class="btn btn-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
+        <i class="bi bi-list"></i>
+      </button>
+      <a class="navbar-brand-custom" routerLink="/">
+
+        <div class="d-flex flex-column">
+          <h6 class="fw-bold m-0">Payment Methods</h6>
+          <small class="text-muted fs-10 fw-normal">Manage your saved payment options.</small>
+        </div>
+
+      </a>
+      <div class="header-actions">
+        <a routerLink="/search" class="btn btn-icon">
+          <i class="bi bi-search"></i>
+        </a>
+        <a routerLink="/notifications" class="btn btn-icon notification-indicator">
+          <i class="bi bi-bell"></i>
+        </a>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container-fluid mt-3">
+
+      <!-- Saved Cards List -->
+      <div class="payment-options-list">
+        <!-- Default Saved Card -->
+        <div class="payment-card default-card">
+          <img src="assets/img/visa.svg" alt="Visa" class="card-brand-logo">
+          <div class="card-details">
+            <h6 class="mb-0">Visa •••• 1234</h6>
+            <small class="text-muted">Expires 12/25</small>
+          </div>
+          <span class="default-indicator"><i class="bi bi-check-circle-fill me-1"></i> Default</span>
+          <div class="dropdown" [class.show]="showDropdown1" (mouseleave)="showDropdown1 = false">
+            <button class="btn btn-icon" type="button" (click)="showDropdown1 = !showDropdown1">
+              <i class="bi bi-three-dots-vertical"></i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end" [class.show]="showDropdown1">
+              <li><a class="dropdown-item text-danger" href="#">Remove</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Another Saved Card -->
+        <div class="payment-card">
+          <img src="assets/img/mastercard.svg" alt="Mastercard" class="card-brand-logo">
+          <div class="card-details">
+            <h6 class="mb-0">Mastercard •••• 5678</h6>
+            <small class="text-muted">Expires 08/26</small>
+          </div>
+          <div class="dropdown ms-auto" [class.show]="showDropdown2" (mouseleave)="showDropdown2 = false">
+            <button class="btn btn-icon" type="button" (click)="showDropdown2 = !showDropdown2">
+              <i class="bi bi-three-dots-vertical"></i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end" [class.show]="showDropdown2">
+              <li><a class="dropdown-item" href="#">Set as Default</a></li>
+              <li><a class="dropdown-item text-danger" href="#">Remove</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Add New Card Button -->
+        <a routerLink="/add-card" class="add-new-card">
+          <i class="bi bi-plus-lg"></i>
+          <span>Add a new card</span>
+        </a>
+      </div>
+
+      <!-- Other Payment Methods -->
+      <div class="digital-wallets-section mt-5">
+        <h6 class="settings-group-title">Other ways to pay</h6>
+
+        <div class="payment-card">
+          <img src="assets/img/paypal.svg" alt="PayPal" class="card-brand-logo">
+          <div class="card-details">
+            <h6 class="mb-0">Connect PayPal</h6>
+            <small class="text-danger">Remove</small>
+          </div>
+          <div class="dropdown ms-auto" [class.show]="showDropdown3" (mouseleave)="showDropdown3 = false">
+            <button class="btn btn-icon" type="button" (click)="showDropdown3 = !showDropdown3">
+              <i class="bi bi-chevron-right"></i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end" [class.show]="showDropdown3">
+              <li><a class="dropdown-item text-danger" href="#">Remove</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <app-footer></app-footer>

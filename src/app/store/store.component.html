@@ -1,0 +1,88 @@
+<app-sidebar></app-sidebar>
+
+<!-- Main Body -->
+<main class="pb-5 mb-5">
+  <!-- Header -->
+  <header class="app-header sticky-top">
+    <button class="btn btn-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
+      <i class="bi bi-list"></i>
+    </button>
+    <a class="navbar-brand-custom" href="#">
+      <div class="d-flex flex-column">
+        <h6 class="fw-bold m-0 text-dark">Fresh Vegetables & Fruits</h6>
+        <small class="text-muted fs-10 fw-normal">Showing 1-8 of 24 results</small>
+      </div>
+    </a>
+    <div class="header-actions">
+      <div class="dropdown">
+        <button class="btn btn-icon" type="button" data-bs-toggle="dropdown">
+          <i class="bi bi-sort-down"></i>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li><a class="dropdown-item" href="#">Popularity</a></li>
+          <li><a class="dropdown-item" href="#">Price: Low to High</a></li>
+          <li><a class="dropdown-item" href="#">Price: High to Low</a></li>
+        </ul>
+      </div>
+      <a href="#" data-bs-toggle="offcanvas" data-bs-target="#filterOffcanvas" class="btn btn-icon">
+        <i class="bi bi-sliders"></i>
+      </a>
+    </div>
+  </header>
+
+  <!-- Product Grid -->
+  <div class="container-fluid mt-3">
+    <div class="row g-2" style="margin-top:4rem;">
+      <div class="col-6" *ngFor="let s of stores">
+        <a class="store-product-card d-block text-decoration-none" [routerLink]="['/produit']" [queryParams]="{ store: s.id }">
+          <div class="card-image-top">
+            <img [src]="s.img" [alt]="s.name">
+          </div>
+          <div class="card-body">
+            <h6 class="product-title">{{ s.name }}</h6>
+            <p class="product-meta">{{ s.address }}</p>
+            <p class="product-price">{{ s.phone }}</p>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Load More Button -->
+    <div class="load-more-section py-4 text-center">
+      <button class="btn btn-sm btn-outline-primary">Load More Products</button>
+    </div>
+  </div>
+
+  <!-- Filter Offcanvas (Bottom Sheet) -->
+  <div class="offcanvas offcanvas-bottom" tabindex="-1" id="filterOffcanvas" style="height: auto;">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title">Filter &amp; Sort</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <!-- Filter by Category -->
+      <div class="mb-4">
+        <label class="form-label fw-bold">Category</label>
+        <div class="btn-group w-100" role="group">
+          <input type="radio" class="btn-check" name="filterCat" id="catVeg" autocomplete="off" checked>
+          <label class="btn btn-outline-secondary" for="catVeg">Vegetables</label>
+          <input type="radio" class="btn-check" name="filterCat" id="catFruit" autocomplete="off">
+          <label class="btn btn-outline-secondary" for="catFruit">Fruits</label>
+          <input type="radio" class="btn-check" name="filterCat" id="catDairy" autocomplete="off">
+          <label class="btn btn-outline-secondary" for="catDairy">Dairy</label>
+        </div>
+      </div>
+      <!-- Filter by Price -->
+      <div class="mb-4">
+        <label for="priceRange" class="form-label fw-bold">Price Range</label>
+        <input type="range" class="form-range" min="0" max="50" step="1" id="priceRange">
+      </div>
+      <!-- Action Buttons -->
+      <div class="d-grid gap-2">
+        <button class="btn btn-primary" type="button" data-bs-dismiss="offcanvas">Apply Filters</button>
+      </div>
+    </div>
+  </div>
+
+  <app-footer></app-footer>
+</main>
