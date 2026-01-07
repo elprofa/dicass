@@ -29,7 +29,9 @@ export class SearchComponent {
   filterCategory: string = 'all';
   filterPrice: number = 50;
 
-  constructor(private http: HttpClient, public loader: LoaderService, private cdr: ChangeDetectorRef, private cartService: CartService) {
+  constructor(private http: HttpClient, public loader: LoaderService, private cdr: ChangeDetectorRef, private cartService: CartService) {}
+
+  ngOnInit() {
     this.fetchProducts();
   }
 
@@ -78,14 +80,14 @@ export class SearchComponent {
           meta: p.meta || '',
         }));
         this.filteredProducts = this.products;
-        this.loading = false;
         this.loader.hide();
+        this.cdr.detectChanges();
       },
       error: () => {
         this.products = [];
         this.filteredProducts = [];
-        this.loading = false;
         this.loader.hide();
+        this.cdr.detectChanges();
       }
     });
   }

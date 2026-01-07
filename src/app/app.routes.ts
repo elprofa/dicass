@@ -39,6 +39,10 @@ export const appRoutes: Routes = [
     loadComponent: () => import('./checkout/checkout.component').then(m => m.CheckoutComponent)
   },
   {
+    path: 'edit-address/:id',
+    loadComponent: () => import('./addresses/edit-address.component').then(m => m.EditAddressComponent)
+  },
+  {
     path: 'addresses',
     loadComponent: () => import('./addresses/addresses.component').then(m => m.AddressesComponent)
   },

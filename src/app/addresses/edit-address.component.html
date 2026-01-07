@@ -1,0 +1,58 @@
+<app-sidebar></app-sidebar>
+
+<div class="body-wrap">
+  <header class="app-header">
+    <button class="btn btn-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
+      <i class="bi bi-list"></i>
+    </button>
+    <a class="navbar-brand-custom" routerLink="/addresses">Mes adresses</a>
+    <div class="header-actions">
+      <a routerLink="/search" class="btn btn-icon">
+        <i class="bi bi-search"></i>
+      </a>
+      <a routerLink="/notifications" class="btn btn-icon notification-indicator">
+        <i class="bi bi-bell"></i>
+      </a>
+    </div>
+  </header>
+
+  <main class="container mt-4">
+    <div class="edit-address-form">
+      <h4>Modifier l'adresse</h4>
+      <form *ngIf="address" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label class="form-label">Libellé</label>
+          <input class="form-control" [(ngModel)]="address.label" name="label">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Ligne d'adresse 1</label>
+          <input class="form-control" [(ngModel)]="address.address_line1" name="address_line1">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Ligne d'adresse 2</label>
+          <input class="form-control" [(ngModel)]="address.address_line2" name="address_line2">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Ville</label>
+          <input class="form-control" [(ngModel)]="address.city" name="city">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Code postal</label>
+          <input class="form-control" [(ngModel)]="address.zip_code" name="zip_code">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Type</label>
+          <select class="form-select" [(ngModel)]="address.type" name="type">
+            <option value="home">Domicile</option>
+            <option value="work">Travail</option>
+            <option value="other">Autre</option>
+          </select>
+        </div>
+        <button class="btn btn-primary" type="submit">Enregistrer</button>
+        <a routerLink="/addresses" class="btn btn-secondary ms-2">Annuler</a>
+      </form>
+    </div>
+  </main>
+
+  <app-footer></app-footer>
+</div>

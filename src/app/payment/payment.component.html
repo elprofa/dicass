@@ -29,39 +29,31 @@
     <main class="container-fluid mt-3">
 
       <!-- Saved Cards List -->
-      <div class="payment-options-list">
-        <!-- Default Saved Card -->
-        <div class="payment-card default-card">
-          <img src="assets/img/visa.svg" alt="Visa" class="card-brand-logo">
-          <div class="card-details">
-            <h6 class="mb-0">Visa •••• 1234</h6>
-            <small class="text-muted">Expires 12/25</small>
-          </div>
-          <span class="default-indicator"><i class="bi bi-check-circle-fill me-1"></i> Default</span>
-          <div class="dropdown" [class.show]="showDropdown1" (mouseleave)="showDropdown1 = false">
-            <button class="btn btn-icon" type="button" (click)="showDropdown1 = !showDropdown1">
-              <i class="bi bi-three-dots-vertical"></i>
-            </button>
-            <ul class="dropdown-menu dropdown-menu-end" [class.show]="showDropdown1">
-              <li><a class="dropdown-item text-danger" href="#">Remove</a></li>
-            </ul>
-          </div>
-        </div>
 
-        <!-- Another Saved Card -->
-        <div class="payment-card">
-          <img src="assets/img/mastercard.svg" alt="Mastercard" class="card-brand-logo">
+      <div class="payment-options-list">
+        <div *ngFor="let method of paymentMethods" class="payment-card" [ngClass]="{'default-card': method.isDefault}">
+          <img *ngIf="method.brand === 'visa'" src="assets/img/visa.svg" alt="Visa" class="card-brand-logo">
+          <img *ngIf="method.brand === 'mastercard'" src="assets/img/mastercard.svg" alt="Mastercard" class="card-brand-logo">
+          <img *ngIf="method.brand === 'paypal'" src="assets/img/paypal.svg" alt="PayPal" class="card-brand-logo">
           <div class="card-details">
-            <h6 class="mb-0">Mastercard •••• 5678</h6>
-            <small class="text-muted">Expires 08/26</small>
+            <h6 class="mb-0">
+              <ng-container [ngSwitch]="method.brand">
+                <span *ngSwitchCase="'visa'">Visa •••• {{method.last4}}</span>
+                <span *ngSwitchCase="'mastercard'">Mastercard •••• {{method.last4}}</span>
+                <span *ngSwitchCase="'paypal'">Connect PayPal</span>
+              </ng-container>
+            </h6>
+            <small class="text-muted" *ngIf="method.expiry">Expires {{method.expiry}}</small>
           </div>
-          <div class="dropdown ms-auto" [class.show]="showDropdown2" (mouseleave)="showDropdown2 = false">
-            <button class="btn btn-icon" type="button" (click)="showDropdown2 = !showDropdown2">
-              <i class="bi bi-three-dots-vertical"></i>
+          <span class="default-indicator" *ngIf="method.isDefault"><i class="bi bi-check-circle-fill me-1"></i> Default</span>
+          <div class="dropdown ms-auto" [class.show]="showDropdown[method.id]" (mouseleave)="closeDropdown(method.id)">
+            <button class="btn btn-icon" type="button" (click)="toggleDropdown(method.id)">
+              <i class="bi bi-three-dots-vertical" *ngIf="method.brand !== 'paypal'"></i>
+              <i class="bi bi-chevron-right" *ngIf="method.brand === 'paypal'"></i>
             </button>
-            <ul class="dropdown-menu dropdown-menu-end" [class.show]="showDropdown2">
-              <li><a class="dropdown-item" href="#">Set as Default</a></li>
-              <li><a class="dropdown-item text-danger" href="#">Remove</a></li>
+            <ul class="dropdown-menu dropdown-menu-end" [class.show]="showDropdown[method.id]">
+              <li *ngIf="!method.isDefault && method.brand !== 'paypal'"><a class="dropdown-item" href="#" (click)="setDefault(method.id); closeDropdown(method.id)">Set as Default</a></li>
+              <li><a class="dropdown-item text-danger" href="#" (click)="removeMethod(method.id); closeDropdown(method.id)">Remove</a></li>
             </ul>
           </div>
         </div>
@@ -74,25 +66,7 @@
       </div>
 
       <!-- Other Payment Methods -->
-      <div class="digital-wallets-section mt-5">
-        <h6 class="settings-group-title">Other ways to pay</h6>
-
-        <div class="payment-card">
-          <img src="assets/img/paypal.svg" alt="PayPal" class="card-brand-logo">
-          <div class="card-details">
-            <h6 class="mb-0">Connect PayPal</h6>
-            <small class="text-danger">Remove</small>
-          </div>
-          <div class="dropdown ms-auto" [class.show]="showDropdown3" (mouseleave)="showDropdown3 = false">
-            <button class="btn btn-icon" type="button" (click)="showDropdown3 = !showDropdown3">
-              <i class="bi bi-chevron-right"></i>
-            </button>
-            <ul class="dropdown-menu dropdown-menu-end" [class.show]="showDropdown3">
-              <li><a class="dropdown-item text-danger" href="#">Remove</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      <!-- Digital wallets (PayPal) are now included in the dynamic list above -->
     </main>
   </div>
   <app-footer></app-footer>
