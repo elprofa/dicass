@@ -5,7 +5,7 @@
     <button class="btn btn-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
       <i class="bi bi-list"></i>
     </button>
-    <a class="navbar-brand-custom" routerLink="/home">FreshCart</a>
+    <a class="navbar-brand-custom" routerLink="/">Notifications</a>
     <div class="header-actions">
       <a routerLink="/search" class="btn btn-icon">
         <i class="bi bi-search"></i>
@@ -20,50 +20,39 @@
   <main class="container-fluid mt-3">
     <!-- Page Header with Action -->
     <div class="notifications-header mb-3">
-      <h6 class="m-0">Notifications</h6>
-      <a href="#" class="text-primary text-decoration-none">Mark all as read</a>
+      <h6 class="m-0">Notification</h6>
+      <a href="#" class="text-primary text-decoration-none">Tout marquer comme lu</a>
     </div>
+    <!-- Loading State -->
+    <div *ngIf="loading" class="text-center my-5">
+      <div class="spinner-border text-primary" role="status"></div>
+      <div>Chargement…</div>
+    </div>
+    <!-- Error State -->
+    <div *ngIf="errorMsg && !loading" class="alert alert-danger">{{ errorMsg }}</div>
     <!-- Notifications List -->
-    <div class="notifications-list">
-      <!-- Unread Notification Item -->
-      <a href="#" class="notification-card unread">
-        <span class="notification-dot"></span>
-        <div class="notification-icon icon-info">
-          <i class="bi bi-truck"></i>
+    <div *ngIf="!loading && notifications.length > 0" class="notifications-list">
+      <a *ngFor="let n of notifications" class="notification-card" [ngClass]="{'unread': !n.read}">
+        <span *ngIf="!n.read" class="notification-dot"></span>
+        <div class="notification-icon" [ngClass]="{
+            'icon-info': n.type === 'info',
+            'icon-warning': n.type === 'warning',
+            'icon-success': n.type === 'success',
+            'icon-danger': n.type === 'danger'
+          }">
+          <i class="bi" [ngClass]="n.icon || 'bi-bell'"></i>
         </div>
         <div class="notification-text">
-          <h6 class="mb-1">Your order #12345 is on its way!</h6>
-          <small class="text-muted">2 mins ago</small>
-        </div>
-      </a>
-      <!-- Unread Notification Item -->
-      <a href="#" class="notification-card unread">
-        <span class="notification-dot"></span>
-        <div class="notification-icon icon-warning">
-          <i class="bi bi-tags"></i>
-        </div>
-        <div class="notification-text">
-          <h6 class="mb-1">A new coupon <code class="small">FRESH20</code> has been added to your account.</h6>
-          <small class="text-muted">1 hour ago</small>
-        </div>
-      </a>
-      <!-- Read Notification Item -->
-      <a href="#" class="notification-card">
-        <div class="notification-icon icon-success">
-          <i class="bi bi-check-circle"></i>
-        </div>
-        <div class="notification-text">
-          <h6 class="mb-1">Your order #12344 was successfully delivered.</h6>
-          <small class="text-muted">Yesterday</small>
+          <h6 class="mb-1">{{ n.title }}</h6>
+          <small class="text-muted">{{ n.timeAgo || n.date || '' }}</small>
         </div>
       </a>
     </div>
-    <!-- Empty State (to be shown when there are no notifications) -->
-    <div class="empty-state mt-5 d-none">
-      <!-- Remove "d-none" to see this -->
+    <!-- Empty State -->
+    <div *ngIf="!loading && notifications.length === 0 && !errorMsg" class="empty-state mt-5">
       <i class="bi bi-bell-slash"></i>
-      <h4>All Caught Up!</h4>
-      <p class="text-muted">You have no new notifications.</p>
+      <h4>Vous êtes à jour !</h4>
+      <p class="text-muted">Vous n'avez pas de nouvelles notifications.</p>
     </div>
   </main>
 </div>

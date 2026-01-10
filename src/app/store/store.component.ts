@@ -4,13 +4,13 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { FooterComponent } from '../footer/footer.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { BACKEND_URL } from '../app.constants';
 
 @Component({
   standalone: true,
   selector: 'app-store',
-  imports: [CommonModule, RouterLink, FooterComponent, SidebarComponent, HttpClientModule],
+  imports: [CommonModule, RouterLink, FooterComponent, SidebarComponent],
   templateUrl: './store.component.html',
   styleUrls: ['./store.component.css']
 })

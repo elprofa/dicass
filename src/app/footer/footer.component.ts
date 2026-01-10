@@ -1,7 +1,7 @@
 
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { BACKEND_URL } from '../app.constants';
 
 @Component({
@@ -9,7 +9,7 @@ import { BACKEND_URL } from '../app.constants';
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css'],
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, HttpClientModule]
+  imports: [RouterLink, RouterLinkActive]
 })
 export class FooterComponent implements OnInit {
   links: any[] = [];

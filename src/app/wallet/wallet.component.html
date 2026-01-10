@@ -5,7 +5,7 @@
     <button class="btn btn-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
       <i class="bi bi-list"></i>
     </button>
-    <a class="navbar-brand-custom" routerLink="/home">FreshCart</a>
+    <a class="navbar-brand-custom" routerLink="/home">Portefeuille</a>
     <div class="header-actions">
       <a routerLink="/search" class="btn btn-icon">
         <i class="bi bi-search"></i>
@@ -21,65 +21,59 @@
 
     <!-- Wallet Balance Card -->
     <div class="wallet-balance-card mb-3">
-      <small>Available Balance</small>
-      <h1 class="m-0">$42.50</h1>
+      <small>Solde disponible</small>
+      <h1 class="m-0">{{ balance | currency:'USD':'symbol':'1.2-2' }}</h1>
     </div>
 
     <!-- Quick Actions -->
     <div class="wallet-actions">
       <a routerLink="/add-card" class="action-card">
         <i class="bi bi-plus-circle"></i>
-        <small>Add Money</small>
+        <small>Ajouter de l'argent</small>
       </a>
       <a routerLink="/add-card" class="action-card">
         <i class="bi bi-arrow-up-right-circle"></i>
-        <small>Send</small>
+        <small>Envoyer</small>
       </a>
       <a routerLink="/add-card" class="action-card">
         <i class="bi bi-bank"></i>
-        <small>Withdraw</small>
+        <small>Retirer</small>
       </a>
     </div>
 
     <!-- Transaction History Section -->
     <div class="transaction-history">
       <div class="history-header">
-        <h6 class="fw-bold mb-2">Transaction History</h6>
-
+        <h6 class="fw-bold mb-2">Historique des transactions</h6>
         <div class="btn-group btn-group-sm w-100" role="group">
-          <button type="button" class="btn btn-outline-secondary active">All</button>
-          <button type="button" class="btn btn-outline-secondary">Credited</button>
-          <button type="button" class="btn btn-outline-secondary">Debited</button>
+          <button type="button" class="btn btn-outline-secondary" [class.active]="filter==='all'" (click)="setFilter('all')">Toutes</button>
+          <button type="button" class="btn btn-outline-secondary" [class.active]="filter==='credit'" (click)="setFilter('credit')">Créditées</button>
+          <button type="button" class="btn btn-outline-secondary" [class.active]="filter==='debit'" (click)="setFilter('debit')">Débitées</button>
         </div>
-
       </div>
-
-      <div class="transaction-list">
-        <div class="transaction-date-header">Today</div>
-        <!-- Debit Transaction -->
-        <div class="transaction-item shadow-sm">
-          <div class="transaction-icon debited">
-            <i class="bi bi-arrow-down"></i>
+      <div *ngIf="loading" class="text-center my-5">
+        <div class="spinner-border text-primary" role="status"></div>
+        <div>Chargement…</div>
+      </div>
+      <div *ngIf="errorMsg && !loading" class="alert alert-danger">{{ errorMsg }}</div>
+      <div class="transaction-list" *ngIf="!loading && filteredTransactions().length > 0">
+        <div *ngFor="let t of filteredTransactions()" class="transaction-item shadow-sm">
+          <div class="transaction-icon" [ngClass]="{'debited': t.type === 'debit', 'credited': t.type === 'credit'}">
+            <i class="bi" [ngClass]="t.type === 'debit' ? 'bi-arrow-down' : 'bi-arrow-up'"></i>
           </div>
           <div class="transaction-details">
-            <p class="mb-0">Payment for Order #12345</p>
-            <small class="text-muted">Oct 21, 2023</small>
+            <p class="mb-0">{{ t.label }}</p>
+            <small class="text-muted">{{ t.date | date:'mediumDate' }}</small>
           </div>
-          <div class="transaction-amount debited">-$10.47</div>
+          <div class="transaction-amount" [ngClass]="{'debited': t.type === 'debit', 'credited': t.type === 'credit'}">
+            {{ t.type === 'debit' ? '-' : '+' }}{{ t.amount | currency:'USD':'symbol':'1.2-2' }}
+          </div>
         </div>
-
-        <div class="transaction-date-header">Yesterday</div>
-        <!-- Credit Transaction -->
-        <div class="transaction-item shadow-sm">
-          <div class="transaction-icon credited">
-            <i class="bi bi-arrow-up"></i>
-          </div>
-          <div class="transaction-details">
-            <p class="mb-0">Added funds to Wallet</p>
-            <small class="text-muted">Oct 20, 2023</small>
-          </div>
-          <div class="transaction-amount credited">+$50.00</div>
-        </div>
+      </div>
+      <div *ngIf="!loading && filteredTransactions().length === 0 && !errorMsg" class="empty-state mt-5">
+        <i class="bi bi-emoji-frown"></i>
+        <h4 class="text-body mb-2 mt-4">Aucune transaction</h4>
+        <p class="text-muted">Aucune opération trouvée pour ce filtre.</p>
       </div>
     </div>
   </main>

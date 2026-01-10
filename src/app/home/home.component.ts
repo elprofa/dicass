@@ -1,26 +1,38 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoaderService } from '../loader.service';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { FooterComponent } from '../footer/footer.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BACKEND_URL } from '../app.constants';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   standalone: true,
   selector: 'app-home',
-  imports: [CommonModule, RouterLink, FooterComponent, SidebarComponent, HttpClientModule],
+  imports: [CommonModule, RouterLink, FooterComponent, SidebarComponent, FormsModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-      lots: any[] = [];
-    products: any[] = [];
+    onCategoryClick(category: any) {
+      const catName = category?.title || category?.name || '';
+      this.router.navigate(['/search'], { queryParams: { category: catName } });
+    }
+  searchQuery: string = '';
+  lots: any[] = [];
+  products: any[] = [];
   categories: any[] = [];
   stores: any[] = [];
   errorMsg: string | null = null;
-  constructor(private http: HttpClient, private loader: LoaderService, private cdr: ChangeDetectorRef) {}
+  constructor(
+    private http: HttpClient,
+    private loader: LoaderService,
+    private cdr: ChangeDetectorRef,
+    private router: Router
+  ) {}
   ngOnInit() {
     this.loader.show();
                 // Chargement dynamique des lots
@@ -80,7 +92,7 @@ export class HomeComponent implements OnInit {
         this.categories = data.map(c => ({
           ...c,
           img: c.image ? `${BACKEND_URL}/${c.image}` : 'placeholder.svg',
-          route: '/search-list'
+          route: '/search'
         }));
         this.errorMsg = null;
         this.cdr.detectChanges();
@@ -92,5 +104,12 @@ export class HomeComponent implements OnInit {
       },
       complete: () => this.loader.hide()
     });
+  }
+  onSearchSubmit() {
+    if (this.searchQuery && this.searchQuery.trim()) {
+      this.router.navigate(['/search'], { queryParams: { q: this.searchQuery.trim() } });
+    } else {
+      this.router.navigate(['/search']);
+    }
   }
 }

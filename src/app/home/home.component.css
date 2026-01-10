@@ -1,2 +1,6 @@
 .home-page { padding: 1rem; }
 .home-page h2 { margin: 0 0 0.5rem 0; }
+.homepage-hero
+{
+    background: linear-gradient(135deg, #06b211, #b24c06);
+}

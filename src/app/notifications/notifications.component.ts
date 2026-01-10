@@ -1,8 +1,9 @@
 
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { SidebarComponent } from '../sidebar/sidebar.component';
+import { CommonModule } from '@angular/common';
 import { FooterComponent } from '../footer/footer.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { BACKEND_URL } from '../app.constants';
 
 @Component({
@@ -10,7 +11,7 @@ import { BACKEND_URL } from '../app.constants';
   standalone: true,
   templateUrl: './notifications.component.html',
   styleUrls: ['./notifications.component.css'],
-  imports: [SidebarComponent, FooterComponent, HttpClientModule]
+  imports: [SidebarComponent, FooterComponent, CommonModule]
 })
 export class NotificationsComponent implements OnInit {
   notifications: any[] = [];

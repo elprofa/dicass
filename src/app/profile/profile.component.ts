@@ -4,13 +4,13 @@ import { CommonModule } from '@angular/common';
 import { FooterComponent } from '../footer/footer.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { RouterLink } from '@angular/router';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { BACKEND_URL } from '../app.constants';
 
 @Component({
   standalone: true,
   selector: 'app-profile',
-  imports: [CommonModule, FooterComponent, RouterLink, SidebarComponent, HttpClientModule],
+  imports: [CommonModule, FooterComponent, RouterLink, SidebarComponent],
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })

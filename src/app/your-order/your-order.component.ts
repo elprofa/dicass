@@ -4,13 +4,13 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { FooterComponent } from '../footer/footer.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { BACKEND_URL } from '../app.constants';
 
 @Component({
   standalone: true,
   selector: 'app-your-order',
-  imports: [CommonModule, RouterLink, FooterComponent, SidebarComponent, HttpClientModule],
+  imports: [CommonModule, RouterLink, FooterComponent, SidebarComponent],
   templateUrl: './your-order.component.html',
   styleUrls: ['./your-order.component.css']
 })

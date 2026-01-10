@@ -1,11 +1,12 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CartService } from '../cart/cart.service';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { FooterComponent } from '../footer/footer.component';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { LoaderService } from '../loader.service';
 import { BACKEND_URL } from '../app.constants';
 
@@ -15,7 +16,7 @@ import { BACKEND_URL } from '../app.constants';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css']
   ,
-  imports: [SidebarComponent, FooterComponent, CommonModule, HttpClientModule, RouterLink, FormsModule]
+  imports: [SidebarComponent, FooterComponent, CommonModule, RouterLink, FormsModule]
 })
 export class SearchComponent {
   products: any[] = [];
@@ -29,10 +30,31 @@ export class SearchComponent {
   filterCategory: string = 'all';
   filterPrice: number = 50;
 
-  constructor(private http: HttpClient, public loader: LoaderService, private cdr: ChangeDetectorRef, private cartService: CartService) {}
+  constructor(
+    private http: HttpClient,
+    public loader: LoaderService,
+    private cdr: ChangeDetectorRef,
+    private cartService: CartService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
     this.fetchProducts();
+    this.route.queryParams.subscribe(params => {
+      const q = params['q'];
+      if (q && typeof q === 'string') {
+        this.searchTerm = q;
+        // Attendre que les produits soient chargés avant de filtrer
+        const trySearch = () => {
+          if (this.products.length > 0) {
+            this.onSearch(q);
+          } else {
+            setTimeout(trySearch, 100);
+          }
+        };
+        trySearch();
+      }
+    });
   }
 
   applyFilters() {

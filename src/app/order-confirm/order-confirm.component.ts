@@ -1,6 +1,6 @@
 
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { BACKEND_URL } from '../app.constants';
 
 @Component({

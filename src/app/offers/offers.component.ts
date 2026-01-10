@@ -2,7 +2,8 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { FooterComponent } from '../footer/footer.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 import { BACKEND_URL } from '../app.constants';
 
 @Component({
@@ -10,7 +11,7 @@ import { BACKEND_URL } from '../app.constants';
   standalone: true,
   templateUrl: './offers.component.html',
   styleUrls: ['./offers.component.css'],
-  imports: [SidebarComponent, FooterComponent, HttpClientModule]
+  imports: [SidebarComponent, FooterComponent, CommonModule]
 })
 export class OffersComponent implements OnInit {
   offers: any[] = [];
